@@ -15,13 +15,19 @@ public class DemoApplication {
     }
 
     //For example, update the home method in DemoApplication.java to:
-@GetMapping("/")
-public String home() {
-    return "Hello from DevOps CI/CD Demo! Welcome to our feature branch.";
-}
+    @GetMapping("/")
+    public String home() {
+        return "Hello from DevOps CI/CD Demo! Welcome to our feature branch.";
+    }
     
     @GetMapping("/version")
     public String version() {
         return "v1.0.0";
+    }
+    
+    // New feature endpoint
+    @GetMapping("/welcome")
+    public String welcome() {
+        return "Welcome to our new feature endpoint! Added in feature/add-welcome-endpoint branch.";
     }
 }
