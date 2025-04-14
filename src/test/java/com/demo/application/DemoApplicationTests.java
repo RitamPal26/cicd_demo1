@@ -8,25 +8,28 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest
+@AutoConfigureMockMvc
 class DemoApplicationTests {
 
     @Autowired
-    private TestRestTemplate restTemplate;
+    private MockMvc mockMvc;
 
     @Test
-    void contextLoads() {
+    public void homeEndpointShouldReturnDefaultMessage() throws Exception {
+        mockMvc.perform(get("/"))
+            .andExpect(status().isOk())
+            .andExpect(content().string("Hello from DevOps CI/CD Demo! Welcome to our secure application."))
+            .andExpect(header().exists("Content-Security-Policy"))
+            .andExpect(header().exists("X-Content-Type-Options"))
+            .andExpect(header().exists("X-Frame-Options"));
     }
-    
+
     @Test
-    void homeEndpointShouldReturnDefaultMessage() {
-        String body = this.restTemplate.getForObject("/", String.class);
-        assertThat(body).contains("Hello from DevOps CI/CD Demo!");
-    }
-    
-    @Test
-    void versionEndpointShouldReturnVersion() {
-        String body = this.restTemplate.getForObject("/version", String.class);
-        assertThat(body).contains("v1.0.0");
+    @WithMockUser(roles = {"USER"})
+    public void versionEndpointShouldReturnVersion() throws Exception {
+        mockMvc.perform(get("/version"))
+            .andExpect(status().isOk())
+            .andExpect(content().string("v1.0.1-secure"));
     }
 }
