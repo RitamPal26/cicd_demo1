@@ -13,18 +13,15 @@ repositories {
 }
 
 dependencies {
+    // Existing dependencies
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    
-    // Add Spring Security dependencies
     implementation 'org.springframework.boot:spring-boot-starter-security'
     
+    // Add these test dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
     testImplementation 'org.springframework.security:spring-security-test'
-    
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
 }
+
 
 test {
     useJUnitPlatform()
