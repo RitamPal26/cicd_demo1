@@ -14,10 +14,11 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
-    @GetMapping("/")
-    public String home() {
-        return "Hello from DevOps CI/CD Demo!";
-    }
+    # For example, update the home method in DemoApplication.java to:
+@GetMapping("/")
+public String home() {
+    return "Hello from DevOps CI/CD Demo! Welcome to our feature branch.";
+}
     
     @GetMapping("/version")
     public String version() {
