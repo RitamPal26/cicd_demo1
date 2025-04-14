@@ -33,7 +33,9 @@ public class DemoApplication {
         
         // Return response with security headers
         return ResponseEntity.ok()
-            .header(HttpHeaders.CONTENT_SECURITY_POLICY, "default-src 'self'")
+            .header("Content-Security-Policy", "default-src 'self'")
+            .header("X-Content-Type-Options", "nosniff")
+            .header("X-Frame-Options", "DENY")
             .header(HttpHeaders.X_CONTENT_TYPE_OPTIONS, "nosniff")
             .header(HttpHeaders.X_FRAME_OPTIONS, "DENY")
             .header(requestIdHeader, requestId)
