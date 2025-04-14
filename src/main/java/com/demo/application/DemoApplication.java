@@ -14,7 +14,7 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
-    # For example, update the home method in DemoApplication.java to:
+    //For example, update the home method in DemoApplication.java to:
 @GetMapping("/")
 public String home() {
     return "Hello from DevOps CI/CD Demo! Welcome to our feature branch.";
