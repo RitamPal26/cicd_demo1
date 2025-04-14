@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.demo'
-version = '1.0.1' // Updated version for hotfix
+version = '1.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
@@ -13,18 +13,10 @@ repositories {
 }
 
 dependencies {
-    // Existing dependencies
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    
-    // Add these test dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
 }
-
 
 test {
     useJUnitPlatform()
-    // Temporarily ignore test failures for hotfix deployment
-    ignoreFailures = true
 }
